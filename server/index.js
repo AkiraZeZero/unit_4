@@ -29,4 +29,4 @@ app.delete("posts/:id", isAuthenticated, deletePost)
 
 
 
-app.listen(PORT, () => console.log("server running on PORT 5000"))
+app.listen(PORT, () => console.log(`server running on PORT 5000 ${PORT}`))
