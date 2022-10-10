@@ -2,7 +2,7 @@
   "name": "mini-social-mountain",
   "version": "0.1.0",
   "main": "server/index.js",
-  "proxy": "http://localhost:4005",
+  "proxy": "http://localhost:4005/",
   "nodemonConfig": {
     "ext": "js,sql",
     "ignore": [
@@ -54,18 +54,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AkiraZeZero/unit_4.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AkiraZeZero/unit_4/issues"
-  },
-  "homepage": "https://github.com/AkiraZeZero/unit_4#readme"
+  }
 }

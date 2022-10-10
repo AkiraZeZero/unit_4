@@ -10,8 +10,8 @@ const Auth = () => {
   const authCtx = useContext(AuthContext)
 
   
-    const submitHandler = (event) => {
-    event.preventDefault();
+    const submitHandler = (e) => {
+    e.preventDefault();
         
     console.log("submitHandler called");
 
@@ -20,18 +20,20 @@ const Auth = () => {
       password,
     }
 
-    const url = "https://socialmtn.devmountain.com";
+    // const url = "http://localhost:4005"; later
+    const url= "https://socialmtn.devmountain.com"
     //   if they are registering send POST req to the /register endpoint w the body to be able to register, if they're logging in send POST req to the /login screen "are you registering? if not redirect to login body"
     axios
     .post(register ? `${url}/register` : `${url}/login`, body)
     .then((res) => {
       console.log("AFTER AUTH", res.data);
         authCtx.login(res.data.token, res.data.exp, res.data.userId)
+        setRegister(!register)
     })
     .catch((error) => {
       setPassword("");
       setUsername("");
-      // setRegister("")
+      setRegister("");
     });
 };
   return (

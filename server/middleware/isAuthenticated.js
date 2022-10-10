@@ -31,7 +31,8 @@ module.exports = {
 }
 
 // 1. We are making JSON we tokens (JWT)
-// 2. Exporting isAuthenticated to be able to use
+// 2. header token makes a get request to Authorization
 // 3. If no header token found console.log ERROR and send 401 status
-// 4. if token equals Json Web Token.verify
-// 5. if not a token throw out a new error saying not authenticated
+// 4. token is going to verify JWT in header token
+// 5. if token equals Json Web Token.verify
+// 6. if not a token throw out a new error saying not authenticated
