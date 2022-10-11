@@ -14,6 +14,7 @@ module.exports = {
         let token
 
         try {
+            console.log(SECRET, headerToken)
             token = jwt.verify(headerToken, SECRET)
         } catch (err) {
             err.statusCode = 500

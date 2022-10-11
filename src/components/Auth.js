@@ -20,8 +20,8 @@ const Auth = () => {
       password,
     }
 
-    // const url = "http://localhost:4005"; later
-    const url= "https://socialmtn.devmountain.com"
+    const url = "http://localhost:4005";
+    // const url= "https://socialmtn.devmountain.com"
     //   if they are registering send POST req to the /register endpoint w the body to be able to register, if they're logging in send POST req to the /login screen "are you registering? if not redirect to login body"
     axios
     .post(register ? `${url}/register` : `${url}/login`, body)
@@ -64,7 +64,7 @@ const Auth = () => {
         </button>
         {console.log(register)}
       </form>
-      <button className="form-btn">
+      <button className="form-btn" onClick={() => setRegister(!register)}>
         Need to {register ? "Login" : "Sign Up"}?
       </button>
     </main>

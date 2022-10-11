@@ -3,7 +3,6 @@ const { SECRET } = process.env;
 const { User } = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const user = require("../models/user");
 
 const createToken = (username, id) => {
   return jwt.sign(
@@ -40,7 +39,7 @@ module.exports = {
           newUser.dataValues.username,
           newUser.dataValues.id
         );
-        console.log(`\( ˙▿˙ )/☆\( ˙▿˙ )/`,token)
+        console.log(`☆`,token)
         const exp = Date.now() + 1000 * 60 * 60 * 48
         res.status(200).send({
             username: newUser.dataValues.username,
@@ -59,13 +58,15 @@ module.exports = {
   login: async (req, res) => {
     try {
         const {username, password} = req.body;
-        let foundUser = await User.foundUser({where: username})
+        let foundUser = await User.findOne({where: {username}})
         if(foundUser) {
+            console.log("63")
+            console.log(foundUser, password)
             const isAuthenticated = bcrypt.compareSync(password, foundUser.hashedPass)
 
             if (isAuthenticated) {
                 const token = createToken(foundUser.dataValues.username, foundUser.dataValues.id)
-                console.log(`\( ˙▿˙ )/☆\( ˙▿˙ )/`,token)
+                console.log(`☆`,token)
                 const exp = Date.now() + 1000 * 60 * 60 * 48
                 res.status(200).send({
                     username: foundUser.dataValues.username,
@@ -74,9 +75,11 @@ module.exports = {
                     exp: exp,
                 })
             } else {
+                console.log("76")
                 res.status(400).send("cannot log in")
             }
         } else {
+            console.log("80")
             res.status(400).send("cannot log in")
         }
     } catch (error) {

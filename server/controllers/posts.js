@@ -1,5 +1,5 @@
-import {User} from "../models/user";
-import {Post} from "../models/posts";
+const {User} = require("../models/user");
+const {Post} = require("../models/posts");
 
 module.exports = {
   getAllPosts: async (req, res) => {
